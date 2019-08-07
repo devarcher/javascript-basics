@@ -207,3 +207,118 @@ app.innerHTML = '<h1>JavaScript Basics</h1>';
 // // Constructor - don't use
 // console.log(new Number(99).valueOf(99));
 
+// // String Literals:
+
+// console.log("pizza 'hello'");
+// console.log('pizza "Hello"');
+// console.log('pizza \'hello\'');
+
+// const pizza = 'Pepperoni'
+// console.log('pizza is: ' + pizza);
+
+// // USE!
+// // Backticks are sweet: They are Template Literals:
+// console.log(`pizza is: ${pizza}!`);
+
+// // Multi Line String:
+// console.log(`
+// Pizza Is: 
+// ${pizza}!
+// `)
+
+// // Don't Use
+// // Strings always take over and convert other types to string via concatenation.
+// console.log(String(55 + 11), String(55 + '11'));
+
+// // Don't Use
+// console.log(new String(55));
+
+// -------------------------------------------
+
+// String Properties and Indexes
+
+// console.log('howdy'.length);
+
+// console.log('pepperoni'['length']);
+
+// // Find first Property of string
+// console.log('Pepperoni'[0]);
+// console.log('Pepperoni'[1]);
+
+// // First Item / Last Item in String:
+// const pizza = 'Pepperoni';
+// console.log(pizza[0], pizza[pizza.length -1]);
+
+// -----------------------------------------------
+
+// Strings and Immutability: Below: The string is copied into the second constant and the copy is mutated.
+
+// const immutableString = 'I shall not change';
+// const uppercaseString = immutableString.toUpperCase();
+
+// console.log(immutableString, uppercaseString);
+
+
+// // Correctly Type Check Strings:
+// console.log(typeof 'Pepperoni');
+// console.log(typeof '0');
+
+// console.log('Pepperoni' instanceof String);
+
+// console.log(new String('Pepperoni') instanceof String);
+
+// // Very Reliable:
+// console.log(Object.prototype.toString.call('Pepperoni'));
+
+//  -------------------------------------------------------
+
+// Exploring String Methods
+// console.log(String.prototype);
+
+// console.log('Pepperoni'.indexOf('P'));
+// console.log('Pepperoni'.indexOf('z'));
+
+// console.log('Pepporoni'.includes('P'));
+
+// console.log('Pepperoni'.replace('oni', 'fire'));
+
+// console.log('Pepperoni'.slice(2, -1));
+
+// // Make an Array
+// console.log('Pepperoni~Plain'.split('~'));
+// console.log('Pepperoni~Plain'.split('~')[0]);
+
+// // Trim
+// console.log('   4444 5555 6666 7777     ');
+// console.log('   4444 5555 6666 7777     '.trim());
+// console.log('   4444 5555 6666 7777     '.trim().length);
+
+
+// ===================================================
+
+// Booleans
+
+// console.log(true, false);
+
+// // Good for Debugging
+// const argument= 'X';
+// console.log(Boolean(argument));
+
+// // Faster than above. Still makes it pass through a test.
+// console.log(!!argument);
+
+// // Empty Arrays and Objects are Truthy
+// console.log(Boolean([]));
+// console.log(Boolean({}));
+
+// // Dont' Use...
+// console.log(new Boolean(argument));
+
+//  ---------------------------------------------------
+// Type cheecking Booleans.
+
+console.log(typeof true);
+console.log(true instanceof Boolean);
+console.log(new Boolean('') instanceof Boolean);
+
+console.log(Object.prototype.toString.call(true));
