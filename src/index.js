@@ -317,8 +317,79 @@ app.innerHTML = '<h1>JavaScript Basics</h1>';
 //  ---------------------------------------------------
 // Type cheecking Booleans.
 
-console.log(typeof true);
-console.log(true instanceof Boolean);
-console.log(new Boolean('') instanceof Boolean);
+// console.log(typeof true);
+// console.log(true instanceof Boolean);
+// console.log(new Boolean('') instanceof Boolean);
 
-console.log(Object.prototype.toString.call(true));
+// console.log(Object.prototype.toString.call(true));
+
+
+
+// Functions
+
+// 3 Types.
+
+// Type 1 - Function Declaration:
+
+// function makeCar() {
+//   console.log('Making a car....');
+// }
+// makeCar();
+
+// // TYPE 2 Function Expression: Anonymous or Named
+// // const makeCarExpression = function makeCar() {};
+// // or Anonymous
+// const makeCarExpression = function myFunction () {};
+
+// console.log(makeCarExpression.name);
+
+// // TYPE 3 Arrow Functions: Must be Function Expression
+// const makeCarArrow = () => {
+//   console.log('Making car...');
+// };
+
+// makeCarArrow();
+
+// // Shorthand version of arrow function
+// const makeCarArrowShorthand = () => console.log('Short');
+
+// makeCarArrowShorthand();
+
+
+// Function Parameters and Defaults
+// name = parameter (On the Recieving end of the function.)  Parameters come THROUGH the function
+// function makeCar(name) {
+//   // name = name || 'Lexus';
+
+//   if (!name) {
+//     name = "Lexus";
+//   }
+//   console.log(`Making Car: ${name.toUpperCase()}`)
+
+// }
+
+// // Strings here are Arguments (pass an Arugment in, and accept it as a Paramenter. ) Arguments are PASSED INTO the FUNCTION.
+// makeCar('Porche');
+// makeCar('Ferrari');
+// makeCar();
+
+// // Para
+
+// Rest Paramenters and Arguments
+// function makeCarPrice() {
+//   console.log(arguments);
+//   const total = Array.from(arguments).reduce((prev, next) => prev + next);
+//   console.log(total);
+//   console.log(`Total: $${total} USD`)
+// }
+
+// makeCarPrice(11, 44, 55, 99, 22);
+
+// New Way of doing things rest paramenter: ...params => "The Rest of the Arguments"
+// function makeCarPriceRest(...params) {
+//   console.log(Array.isArray(params)); 
+//   const total = params.reduce((prev, next) => prev + next);
+//   console.log(`Total = $${total}`);
+// }
+
+// makeCarPriceRest(99, 88, 77, 11, 44);
