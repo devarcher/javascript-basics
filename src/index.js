@@ -830,3 +830,172 @@ app.innerHTML = '<h1>JavaScript Basics</h1>';
 // -------------------------------------------------------
 
 // Arrays!
+
+// const drinks = ['Lemonade', 'Lime', 'Peach', 'Cola'];
+
+// drinks[0] = 'Diet Lemonade';
+
+// Accessing Array positions / last position
+// console.log(drinks);
+// console.log(drinks[0]);
+// console.log(drinks[drinks.length - 1]);
+
+// Clear Array but keeping constant together.
+// drinks.length = 0;
+// drinks.splice(0, drinks.length);
+// console.log(drinks);
+
+// -------------------------------------------------------
+
+// Multi-Dimensional Array (An Array with and array inside it)
+
+// const drinks = [['Lemonade', 99], ['Lime', 99], ['Peach', 39]];
+
+// Two APproaches
+// const drinkOne = drinks[0];
+// const drinkTwo = drinks[1];
+// const drinkThree = drinks[2];
+
+
+// console.log(`Drink: ${drinkOne[0]}, Price: ${drinkOne[1]}`);
+// console.log(drinkTwo);
+// console.log(drinkThree);
+
+// // This Approach
+// console.log(`Drink: ${drinks[0][0]}, Price: ${drinks[0][1]}`);
+
+
+// ---------------------------------------------------------------
+// Destructuring Arrays
+// const drinks = [['Lemonade', 99], ['Lime', 99], ['Peach', 39]];
+
+// const [ one, [a, b], ...rest ] = drinks;
+
+// console.log(one, a, b, rest);
+
+
+// -------------------------------------------------------------
+// Adding Array Elements
+
+// const drinks = [['Lemonade', 99], ['Lime', 99], ['Peach', 39]];
+
+
+// Mutable Approach. Mutates Original Drinks Array
+// Beginning
+// drinks.unshift(['Water', 'Free']);
+
+// // end
+// drinks.push(['Cola', 129]);
+
+// console.log(drinks);
+
+// Immutable Approach is safer - COPIES Original Array light LightRoom.
+// const newDrinksArray = [['Water', 'Free'], ...drinks, ['Cola', 129]];
+// console.log(newDrinksArray);
+
+// Adding something into the Middle
+// const index = 1;
+
+// console.log ([
+//   ...drinks.splice(0, index),
+//   ['Mojito', 699],
+//   ...drinks.splice(index -1),
+// ]);
+
+// console.log(drinks);
+
+
+//--------------------------------------------------------------
+// Removing Array Elements
+
+// const drinks = ['Lemonade', 'Lime', 'Peach']
+
+// beginning (Mutable)
+// const removedReturned = drinks.shift();
+// console.log(removedReturned);
+// console.log(drinks);
+
+// //en
+// const removed = drinks.pop();
+// console.log(removed);
+
+// // Immuntable
+// const index = drinks.length - 1;
+// const newDrinks = [...drinks.slice(0, index), ...drinks.slice(index + 1)];
+// console.log(newDrinks);
+// console.log(drinks);
+
+
+// ---------------------------------------------------------
+// Shallow and Deep Array Cloning
+
+// const drinks = [['Lemonade', 99], ['Lime', 99], ['Peach', 89]];
+
+// All Shallow Approach
+// const drinksClone = [...drinks];
+// const drinksClone = drinks.slice();
+// const drinksClone = Array.from(drinks);
+
+
+// Deep Array Approach => JSON
+// const drinksClone = JSON.parse(JSON.stringify(drinks));
+
+// drinksClone[0][1] = 1000;
+
+// console.log(drinksClone);
+// console.log(drinks);
+
+// --------------------------------------------------------------
+//  Merging Arrays
+
+// const drinks = [['Lemonade', 99], ['Lime', 99]];
+// const newDrinks = [['Peach', 89]];
+
+// // const merged = drinks.concat(newDrinks);
+// // console.log(merged);
+
+
+// // Spread Operator
+// // const merged =[...drinks, ...newDrinks];
+
+// // Value only:
+// const merged = [...drinks, newDrinks];
+// console.log(merged);
+// console.log(drinks);
+// console.log(newDrinks);
+
+// ----------------------------------------------
+
+// Reversing and Sorting Arrays 
+
+// const drinks = [
+//   { name: 'Lemonade', price: 79 },
+//   { name: 'Peach', price: 99 },
+//   { name: 'Lime', price: 89 },
+// ];
+
+// // // console.log(drinks.reverse());
+// // console.log(drinks.sort(function (a, b) {
+// //   return a.price - b.price;
+// // }));
+
+// // console.log(drinks.sort(function (a, b) {
+// //   return b.price - a.price;
+// // }));
+
+// // Good case for Arrow Function
+// console.log(drinks.sort((a, b) => b.price - a.price));
+
+
+// --------------------------------------------------
+// // Type Check Arrays
+// // Arrays are Objects.
+// console.log(typeof []);
+// //  Correct - quick check
+// console.log([] instanceof Array);
+
+// // Best option - for quick aand easy - Object with a Static method. Not a new instance.
+// console.log(Array.isArray([1, 2, 3, 4]));
+
+// // Bullet Proof - wrap it in a function.
+// console.log(Object.prototype.toString.call([]));
