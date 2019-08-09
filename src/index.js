@@ -393,3 +393,440 @@ app.innerHTML = '<h1>JavaScript Basics</h1>';
 // }
 
 // makeCarPriceRest(99, 88, 77, 11, 44);
+
+
+// ---------------------------------------------------------------
+// Function Return Values - Self Contained Piece of logic that is repeatable.
+// function makeCarPrice(...params) {
+// const total = params.reduce((prev, next) => prev + next);
+// return total;
+// };
+
+// const makeCarPrice = (...params) => {
+//   const total = params.reduce((prev, next) => prev + next);
+//   return total;
+// };
+
+// const makeCarPrice = (...params) => params.reduce((prev, next) => prev + next);
+
+// const totalPrice = makeCarPrice(11, 22, 33, 44, 10100);
+// console.log(`Total: ${totalPrice}`);
+
+// // -----------------------
+// const makeCarPrice = (...params) => {
+//   const total = params.reduce((prev, next) => prev + next);
+//   return total;
+// };
+
+// const makeCarPriceArrow  = (...params) => params.reduce((prev, next) => prev + next);
+
+// console.log(`Total: ${makeCarPrice(11, 22, 33, 44, 10100)}`);
+// console.log(`Total: ${makeCarPriceArrow(99, 43, 234)}`);
+// ------------------------------------------------------------ Scope
+
+// function makeCarPartID(id) {
+//   const theId = `CAR_PART_${id}`;
+//   return function(name) {
+//   return `${theId}_${name.toUpperCase()}`;
+//     };
+// }
+
+// const carPartId = makeCarPartID('x83jk');
+// console.log(carPartId('Left Door'));
+// console.log(carPartId('Right Door'))
+// console.log(carPartId('Trunk'))
+
+// const anotherCarPartId = makeCarPartID('8sadfjk;');
+// console.log(anotherCarPartId('Left Door'));
+// console.log(anotherCarPartId('Right Door'))
+// console.log(anotherCarPartId('Trunk'))
+
+// IIFE Immediately invoked Function Expression:
+// const carPartId = (function(id) {
+//   const theId = `CAR_PART_${id}`;
+//   return function (name) {
+//     return `${theId}_${name}`;
+//   };
+// })('xfaj5');
+
+// console.log(carPartId('Left Door'));
+// console.log(carPartId('Right Door'));
+
+// --------------------------------------
+
+// Functions and Callbacks
+// function carPartId(name, fn) {
+//   const theId = `CAR_PART_x8z0s1`;
+//   return fn(`${theId}_${name}`);
+// }
+
+// const carPart = carPartId('Left Door', function(id) {
+//   return `Car Part ID: ${id}`;
+// });
+
+// console.log(carPart);
+
+// Function Context "THIS" ____________________------
+// const firstCar = { id: 'x8kD' };
+// const secondCar = { id: 'xsadf' };
+// const thirdCar = { id: 'h9ajsfdkJ'};
+
+// function carPartId(name, quantity) {
+//   console.log(`${this.id}_${name}_${quantity}`);
+// }
+
+// // .bind (For Multiple uses)
+// const boundThirdCar = carPartId.bind(thirdCar);
+// boundThirdCar('Windscreen', 99);
+// boundThirdCar('SeatBelt', 9);
+// boundThirdCar('Exhaust', 11);
+
+// // Call = C = Comma
+// carPartId.call(firstCar, 'Ferrari', 12);
+// // Apply = A = Array
+// carPartId.apply(secondCar, ['Coolio', 21]);
+
+
+// -----------------------------------------
+// Objects
+
+// const drink = {
+//   id: 'xhs8Pla',
+//   name: 'Lemonade',
+//   price: {
+//     sale: 99,
+//     full: 129,
+//   },
+// };
+
+// const drinkReference = drink;
+// drinkReference.name = 'Peach';
+
+// console.log(drink === drinkReference);
+
+// console.log(new Object());
+// console.log(Object());
+
+// const drink = {
+//   id: 'xhs8p1a',
+//   name: 'Lemonade',
+//   price: 99,
+//   getDrinkDetails() {
+//     return `Drink ${this.name} (${this.price})`;
+//   },
+//   'abc 123': 'I am the value!',
+//   100: 'I am a number!',
+// };
+
+// console.log(drink.getDrinkDetails());
+
+// const myId = 'id';
+
+// console.log(drink[myId]);
+// console.log(drink.name);
+// console.log(drink.price);
+
+// console.log(drink['abc 123']);
+// console.log(drink['100']);
+
+// Short Hand Properties
+
+// const id = 'xhs8P1a';
+// const name = 'Lemonade';
+// const price = 99;
+
+// const someKey = 'name';
+
+// const drink = {
+//   id,
+//   [someKey]: name,
+//   price,
+//   getDrinkDetails() {
+//     return `Drink ${this.name} (${this.price})`;
+//   },
+// };
+
+// console.log(drink);
+
+// ----------------------------------------
+// Destructuring
+
+// const drink = {
+//   id: 'xhs8Pla',
+//   name: 'Lemonade',
+//   price: {
+//     sale: 99,
+//     full: 129,
+//   },
+// };
+
+// const myDrinkId = drink.id;
+// const myDrinkName = drink.name;
+// const myDrinkSalePrice = drink.price.sale;
+
+// console.log(myDrinkId, myDrinkName, myDrinkSalePrice);
+
+// // Destructuring = VERY CLEAN AND GOOD
+
+
+
+// // const { id, name, price: { full }} = drink;
+// // console.log(id, name, full);
+
+// // const id = 1234;
+
+// const { 
+//   // id: myId, 
+//   price: { full },
+//   ...rest
+// } = drink;
+
+// // const { sale, full } = drink.price;
+
+// console.log(name, full, rest);
+
+
+// -------------------------------------------------
+
+// Property and Value Existence
+
+
+// const drink = {
+//   id: 'sfjk8',
+//   name: 'Lemonade',
+//   price: {
+//     sale: 99, 
+//     full: 129,
+//   },
+// };
+
+// if (drink.id) {
+// console.log(drink.id);
+// }
+
+// for (const prop in drink) {
+//   console.log(drink[prop]);
+// }
+
+// Value Exists:::
+
+// // Imperative - Spelled out for the computer. Calculate it.
+// for (const prop in drink) {
+//   if (drink[prop] === 'Lemonade') {
+//     console.log(drink[prop])
+//   }
+// }
+
+// // Decaritive> Do this for me.
+// console.log(Object.values(drink));
+
+
+// const hasLemonade = Object.values(drink).includes('Lemonade');
+// console.log(hasLemonade);
+
+// Property Existence 
+// console.log(drink.hasOwnProperty('name'));
+
+
+// // Safest way to do this! x.prototype...!!!!!!!!!!!!
+// console.log(Object.prototype.hasOwnProperty.call(drink, 'name'))
+
+// console.log(Object.keys(drink).includes('name'));
+
+// ---------------------------------------------
+// Adding and Updating Objects
+
+// const drink = {
+//   id: 'xhs8Pla',
+//   name: 'Lemonade',
+//   price: {
+//     sale: 99,
+//     full: 129,
+//   },
+// };
+
+// // drink.brand = 'My Drinks Co.';
+// // drink.name = 'Peach';
+
+// // Adding / Updating in one line
+// function propUpdate(prop, value) {
+//   drink[prop] = value;
+// }
+
+// propUpdate('brand', 'My Drinks Co')
+// propUpdate('name', 'Peach');
+// propUpdate('size', '16oz');
+
+// console.log(drink);
+
+//  -------------------------------------------------
+//  Removing Object Properties
+
+// const drink = {
+//   id: 'xhs8P1a',
+//   name: 'Lemonade',
+//   price: {
+//     sale: 99,
+//     full: 129,
+//   },
+// };
+
+// // // slow to do this...
+// // delete drink.name;
+
+// // Performance Approach. Property still exists.
+// drink.name = undefined;
+
+
+// Non Destructive (Unmutated Approach)
+// const { price, ...rest } = drink;
+// console.log(price, rest, drink);
+
+//  ----------------------------------------------------
+
+// // Shallow and Deep Object Cloning
+// const drink = {
+//   id: 'xhs8P1a',
+//   name: 'Lemonade',
+//   price: {
+//     sale: 99,
+//     full: 129,
+//   },
+// };
+
+// Assigns From Right To Left. Drink goes into New Object Literal
+// const drinkClone = Object.assign({}, drink);
+// drinkClone.id = 'abcd';
+
+// // Shallow Cloning only clones TOP LEVEL. Not second level Objects.
+// drinkClone.price.sale = 79;
+
+
+// Shallow Copy with "Spread" 
+// const drinkClone = {...drink};
+// drinkClone.id = 'abcd'
+// drinkClone.price.sale = 79;
+
+
+
+// Deep Cloning ALL levels. Stringifing then parsing. No Functions in JSON.
+// JSON
+
+// const drinkStringified = JSON.stringify(drink);
+// const drinkClone = JSON.parse(drinkStringified);
+// drinkClone.id = 'abcd'
+// drinkClone.price.sale = 79;
+
+// console.log(drink);
+
+// ----------------------------------------------------
+// Merging Objects:
+
+// const drink = {
+//   id: 'xhs8pla',
+//   name: 'Lemonade',
+// };
+
+// const price = {
+//   sale: 99,
+//   full: 129,
+// };
+
+// // Assign and Spread Operator
+// // const mergedDrink = Object.assign({}, drink, { price });
+// const mergedDrink = {...drink, ...{ price } };
+
+// console.log(drink, price);
+// console.log(mergedDrink);
+
+//  --------------------------------------------------
+// Correctly Type Checking Objects
+
+// const drink = {
+//   id: 'xhs9Pla',  
+//   name: 'Lemonade',
+//   price: {
+//     sale: 99,
+//     full: 129,
+//   },
+// };
+
+// function getType(obj) {
+//   return Object.prototype.toString
+//     .call(obj)
+//     .slice(8, -1)
+//     .toLowerCase();
+// }
+
+// console.log(getType(drink));
+// console.log(getType([]));
+// console.log(getType(null));
+
+// console.log({} instanceof Object);
+// console.log([] instanceof Object);
+
+// // ALWAYS USE x.prototype.....
+// console.log(Object.prototype.toString.call(drink));
+// console.log(Object.prototype.toString.call(null));
+// console.log(Object.prototype.toString.call([]));
+
+
+// ------------------------------------------------------
+// Imperative Object Literals
+//  "In" Pulls from Prototype.
+// const drink = {
+//   name: 'Lemonade',
+//   price: {
+//     sale: 99,
+//     full: 129,
+//   },
+// };
+
+// const drinkWithId = Object.create(drink);
+// drinkWithId.id = 'xh8ads';
+
+// console.log('name' in drinkWithId);
+
+// for (const prop in drinkWithId) {
+//   if (drinkWithId.hasOwnProperty(prop)) {
+//     console.log(prop, drinkWithId[prop]);
+//   }
+// }
+
+// console.log('-----')
+
+
+
+// // For...in Loop. OBJECTS ARE UNORDED DATA STRUCTURES.  
+// // Prop aliases every Property.
+// // IN key word. For every key in every Object...
+// // SQUARE Brackets get to each value in Object.
+// for (const prop in drink) {
+//   const value = drink[prop];
+//   if (Object.prototype.toString.call(value) === '[object Object]') {
+//     for (const key in value) {
+//     console.log(key);
+//     }
+//   } // console.log(drink[prop]);
+// }
+
+// Declaritive....DOesn't iterate over Inheirited.
+// const drink = {
+//   id: 'sjfd9',
+//   name: 'Lemonade',
+//   price: {
+//     sale: 99,
+//     full: 129,
+//   },
+// };
+
+
+// Object.keys(drink).forEach(function (prop) {
+//   console.log(drink[prop], prop);
+// });
+
+// console.log(Object.entries(drink));
+
+// -------------------------------------------------------
+
+// Arrays!
